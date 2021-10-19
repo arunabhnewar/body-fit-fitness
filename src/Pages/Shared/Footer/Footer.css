@@ -1,0 +1,23 @@
+.footer-section{
+    background-color: #1e272e;
+}
+.footer-content {
+    color: #7f8c8d;
+    cursor: pointer;
+    transition: all 0.6s linear;
+}
+.footer-content:hover {
+    color: #f39c12;
+}
+
+.icon {
+    color: #fff;
+    font-size: 28px;
+    margin-right: 10px;
+    cursor: pointer;
+    transition: transform 0.5s;
+}
+.icon:hover {
+    color: #f39c12;
+    transform:scale(1.2);
+}

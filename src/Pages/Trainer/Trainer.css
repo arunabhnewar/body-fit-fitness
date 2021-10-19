@@ -1,0 +1,15 @@
+#trainer {
+    background-color: #000;
+}
+
+.trainer-icon {
+    color: green;
+    font-size: 28px;
+    margin-right: 10px;
+    cursor: pointer;
+    transition: transform 0.5s;
+}
+.trainer-icon:hover {
+    color: #f39c12;
+    transform:scale(1.2);
+}

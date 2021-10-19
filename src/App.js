@@ -35,9 +35,9 @@ function App() {
             <Route path="/trainer">
               <Trainer />
             </Route>
-            <Route path="/blog">
+            <PrivateRoute path="/blog">
               <Blog />
-            </Route>
+            </PrivateRoute>
             <PrivateRoute path="/program/:programId">
               <Program />
             </PrivateRoute>

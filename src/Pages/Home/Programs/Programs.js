@@ -1,9 +1,15 @@
-import useAuth from '../../../Hooks/useAuth';
+import { useEffect, useState } from 'react';
 import SingleProgram from '../SingleProgram/SingleProgram';
 import './Programs.css';
 
 const Programs = () => {
-    const { programs } = useAuth();
+    const [programs, setPrograms] = useState([]);
+
+    useEffect(() => {
+        fetch('https://raw.githubusercontent.com/arunabhnewar/fake-data-program/main/programs.json')
+            .then(res => res.json())
+            .then(data => setPrograms(data));
+    }, [])
     return (
         <div className="my-5 pt-5">
             <h5 className="text-center text-white">Programs</h5>

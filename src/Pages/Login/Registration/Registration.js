@@ -6,7 +6,7 @@ import register from '../../../images/register.png';
 
 const Registration = () => {
 
-    const { handleEmailChange, handlePasswordChange, registerNewUser } = useAuth();
+    const { getName, handleEmailChange, handlePasswordChange, registerNewUser } = useAuth();
     return (
         <div className="container my-5 pb-3">
             <div className="row ">
@@ -28,6 +28,8 @@ const Registration = () => {
                     <div onSubmit={registerNewUser}
                         className="text-center">
 
+                        <input onBlur={getName} className="input-field border-bottom border-0 w-50 " type="text" name="name" placeholder="Name" required />
+                        <br /> <br />
                         <input onBlur={handleEmailChange} className="input-field border-bottom border-0 w-50 " type="email" name="email" placeholder="Email" required />
                         <br /> <br />
                         <input onBlur={handlePasswordChange} className="input-field border-bottom border-0 w-50" type="password" name="password" placeholder="Password" required />

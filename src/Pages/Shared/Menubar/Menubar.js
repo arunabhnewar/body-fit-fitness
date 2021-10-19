@@ -14,7 +14,6 @@ const Menubar = () => {
             <Navbar bg="dark" variant="dark" sticky="top" collapseOnSelect expand="lg">
                 <Container>
                     <Navbar.Brand href="#home">Body Fit</Navbar.Brand>
-
                     <Navbar.Toggle />
                     <Navbar.Collapse className="justify-content-end">
                         <Nav.Link as={HashLink} className="menu-items" to="/home#home">Home</Nav.Link>

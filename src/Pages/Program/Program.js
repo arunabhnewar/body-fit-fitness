@@ -1,15 +1,20 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { faStar as fullStar } from "@fortawesome/free-solid-svg-icons";
 import { faStar as emptyStar } from "@fortawesome/free-regular-svg-icons";
 import Rating from 'react-rating';
 import { useParams } from 'react-router';
-import useAuth from '../../Hooks/useAuth';
 import './Program.css';
 
 const Program = () => {
     const { programId } = useParams();
-    const { programs } = useAuth();
+    const [programs, setPrograms] = useState([]);
+
+    useEffect(() => {
+        fetch('https://raw.githubusercontent.com/arunabhnewar/fake-data-program/main/programs.json')
+            .then(res => res.json())
+            .then(data => setPrograms(data));
+    }, [])
     const matchingItem = programs?.find(program => program?.id === programId)
     return (
         <div className="container-fluid program-section py-5 ">

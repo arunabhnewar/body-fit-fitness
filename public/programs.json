@@ -3,6 +3,8 @@
         "id": "aerobic",
         "name": "Aerobic",
         "charge": 100,
+        "rating": "4.5",
+        "ratingCount": "980",
         "img": "https://body-fit-image.netlify.app/aerobic.png",
         "instructor": "Mari Collins",
         "description": "Aerobic dance exercise is any physical activity that makes you sweat causes you to breathe harder and gets your heart beating faster than at rest. Aerobic dance uses your large muscle groups, is rhythmic in nature and can be maintained continuously for at least 10 minutes."
@@ -11,6 +13,8 @@
         "id": "bodybuilding",
         "name": "Body-Building",
         "charge": 100,
+        "rating": " 5",
+        "ratingCount": "590",
         "img": "https://body-fit-image.netlify.app/body-building.png",
         "instructor": "Oscar Brook",
         "description": "There are a number of ways, however, you can tackle them – for example, splitting them by upper and lower body exercises or focusing on push and pull motions – and then even more ways of scheduling them: every other day, four days on three days off, and so on."
@@ -19,6 +23,8 @@
         "id": "cardio",
         "name": "Cardio",
         "charge": 90,
+        "rating": "4.7",
+        "ratingCount": "999",
         "img": "https://body-fit-image.netlify.app/cardio.png",
         "instructor": "James Buffer",
         "description": "It all comes down to the programming of the workout and the exercises you choose, ACE-certified personal trainer Sivan Fagan, owner of Strong with Sivan in Baltimore, tells SELF. For instance, using a circuit format—going from one exercise to the other without resting—is going to keep your heart rate more elevated than performing the move with straight sets (say, a prescribed number of reps, followed by a rest period, before doing it all again) will."
@@ -27,6 +33,8 @@
         "id": "parkour",
         "name": "Parkour-Ground",
         "charge": 60,
+        "rating": "4.3",
+        "ratingCount": "342",
         "img": "https://body-fit-image.netlify.app/parkour-ground.png",
         "instructor": "Leonard Smith",
         "description": "Parkour is a training discipline where practitioners (called traceurs) aim to get from one point to another in a complex environment, without assisting equipment and in the fastest and most efficient way possible.In French, the term passement is used for overcoming any obstacle. You pass or traverse a barrier in whatever way suits you and the moment; there’s no one prescribed method for anything."
@@ -35,6 +43,8 @@
         "id": "weightlifting",
         "name": "Weight-Lifting",
         "charge": 70,
+        "rating": " 4",
+        "ratingCount": "350",
         "img": "https://body-fit-image.netlify.app/weight-lifting.png",
         "instructor": "James Buffer",
         "description": "For an extended stay or for extra space, choose one of our Suites. These spacious surroundings include a separate living area and a bedroom with either two double beds or  one king bed  for ultimate comfort and privacy. You can chat with friends or colleagues in the living area and then retire to the separate bedroom for a quiet night’s sleep. In addition to all standard amenities, our Suites include a free deep sleep pillow spray and turndown service every evening."
@@ -43,6 +53,8 @@
         "id": "yoga",
         "name": "Yoga",
         "charge": 60,
+        "rating": "4.6",
+        "ratingCount": "617",
         "img": "https://body-fit-image.netlify.app/yoga.png",
         "instructor": "Mari Collins",
         "description": "There are broadly two kinds of theories on the origins of yoga. The linear model argues that yoga has Aryan origins, as reflected in the Vedic textual corpus, and influenced Buddhism; according to Crangle, this model is mainly supported by Hindu scholars. The synthesis model argues that yoga is a synthesis of indigenous, non-Aryan practices with Aryan elements; this model is favoured in western scholarship"

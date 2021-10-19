@@ -1,15 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import useAuth from '../../../Hooks/useAuth';
 import SingleProgram from '../SingleProgram/SingleProgram';
 import './Programs.css';
 
 const Programs = () => {
-    const [programs, setPrograms] = useState([]);
-
-    useEffect(() => {
-        fetch('./programs.json')
-            .then(res => res.json())
-            .then(data => setPrograms(data));
-    }, [])
+    const { programs } = useAuth();
     return (
         <div className="my-5 pt-5">
             <h5 className="text-center text-white">Programs</h5>

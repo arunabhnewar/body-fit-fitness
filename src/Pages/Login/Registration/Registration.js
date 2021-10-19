@@ -5,7 +5,8 @@ import register from '../../../images/register.png';
 
 
 const Registration = () => {
-    const { handleRegistration, handleEmailChange, handlePasswordChange } = useAuth();
+
+    const { handleEmailChange, handlePasswordChange, registerNewUser } = useAuth();
     return (
         <div className="container my-5 pb-3">
             <div className="row ">
@@ -15,7 +16,7 @@ const Registration = () => {
                     </div>
                 </div>
 
-                <div className="col-sm-12 col-md-6">
+                <form className="col-sm-12 col-md-6">
                     <h2 className="text-success text-center">Sign Up</h2>
 
                     <p className="text-center mb-5">
@@ -24,7 +25,8 @@ const Registration = () => {
                         </NavLink>
                     </p>
 
-                    <div onSubmit={handleRegistration} className="text-center">
+                    <div onSubmit={registerNewUser}
+                        className="text-center">
 
                         <input onBlur={handleEmailChange} className="input-field border-bottom border-0 w-50 " type="email" name="email" placeholder="Email" required />
                         <br /> <br />
@@ -36,7 +38,7 @@ const Registration = () => {
                             value="Sign Up" />
 
                     </div>
-                </div>
+                </form>
             </div>
 
         </div>

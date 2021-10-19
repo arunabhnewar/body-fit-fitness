@@ -1,22 +1,26 @@
 import { faGoogle } from '@fortawesome/free-brands-svg-icons';
-import { faKey } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { NavLink, useLocation, useHistory } from 'react-router-dom';
 import useAuth from '../../../Hooks/useAuth';
+
 import login from '../../../images/login-2.png';
 
 
 const Login = () => {
-    const { user, signInUsingGoogle, handleLogin, error, handleEmailChange, handlePasswordChange, handleResetPassword } = useAuth();
+    const { allContext } = useAuth();
+    const { setUser, signInUsingGoogle, handleLogin, error, handleEmailChange, handlePasswordChange } = allContext;
     const location = useLocation();
     const history = useHistory();
-    const redirect_url = location.state?.from || '/home';
-    console.log(user);
+    const redirect_url = location?.state?.from || '/home';
 
-    const handleGoogleSignIn = () => {
+
+    const handleGoogleSignIn = (e) => {
+        e.preventDefault()
         signInUsingGoogle()
             .then(result => {
+                console.log(result);
+                setUser(result.user)
                 history.push(redirect_url)
             })
     }
@@ -38,15 +42,11 @@ const Login = () => {
                             Are you New? Please Sign Up!
                         </NavLink>
                     </p>
+                    <p className="text-danger">{error}</p>
 
-                    <div onSubmit={handleLogin} className="text-center">
-                        <p className="text-danger">{error}</p>
-                        <input className="input-field border-bottom border-0 w-50" type="text" name="first name" placeholder="First name" />
-                        <br /> <br />
-                        <input className="input-field border-bottom border-0 w-50" type="text" name="last name" placeholder="Last name" />
-                        <br /> <br />
-                        <input className="input-field border-bottom border-0 w-50" type="phone" name="phone" placeholder="Phone" />
-                        <br /> <br />
+                    <form onSubmit={handleLogin} className="text-center">
+
+
                         <input onBlur={handleEmailChange} className="input-field border-bottom border-0 w-50" type="email" name="email" placeholder="Email" required />
                         <br /> <br />
                         <input onBlur={handlePasswordChange} className="input-field border-bottom border-0 w-50" type="password" name="password" placeholder="Password" required />
@@ -57,10 +57,10 @@ const Login = () => {
                             value="Login" />
                         <br /> <br />
 
-                        <button onClick={handleGoogleSignIn} type="submit" className="btn btn-success me-2"> <FontAwesomeIcon icon={faGoogle} /> Google Sign In</button>
+                        <p>-------or---------</p>
+                        <button onClick={handleGoogleSignIn} type="submit" className="btn btn-warning me-2"> <FontAwesomeIcon icon={faGoogle} /> Google Sign In</button>
 
-                        <button onClick={handleResetPassword} type="submit" className="btn btn-warning"> <FontAwesomeIcon icon={faKey} /> Reset Password</button>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>

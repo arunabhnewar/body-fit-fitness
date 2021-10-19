@@ -17,37 +17,21 @@ const useFirebase = () => {
     const auth = getAuth();
     const googleProvider = new GoogleAuthProvider();
 
+
     const handleEmailChange = (e) => {
-        setEmail(e.target.value);
+        setEmail(e?.target?.value);
     };
 
     const handlePasswordChange = (e) => {
-        setPassword(e.target.value);
+        setPassword(e?.target?.value);
     };
 
+    const getName = (e) => {
+        setName(e?.target?.value);
+    };
 
-    const handleRegistration = (e) => {
+    const registerNewUser = (e) => {
         e.preventDefault();
-        if (password.length < 6) {
-            console.log('Password must be at least 6 characters')
-            return;
-        }
-        if (!/(?=.*[A-Z].*[A-Z])/.test(password)) {
-            console.log("Password must contain 2 uppercase")
-            return;
-        }
-        createUserWithEmailAndPassword(auth, email, password)
-            .then(result => {
-                setUser(result.user);
-                verifyEmail(email);
-                setError("");
-            })
-            .catch(error => {
-                setError(error.message)
-            })
-    }
-
-    const registerNewUser = (email, password) => {
         createUserWithEmailAndPassword(auth, email, password)
             .then(result => {
                 const user = result.user;
@@ -70,21 +54,13 @@ const useFirebase = () => {
         sendEmailVerification(auth.currentUser)
             .then(result => { })
     }
-
+    //google sign in
     const signInUsingGoogle = () => {
         return signInWithPopup(auth, googleProvider)
-            .then(result => {
-                setUser(result.user);
-                setError("");
-            })
-            .finally(() => setIsLoading(false))
-
-            .catch(error => {
-                setError(error.message);
-            })
     }
 
-    const handleLogin = (email, password) => {
+    const handleLogin = (e) => {
+        e.preventDefault()
         signInWithEmailAndPassword(auth, email, password)
             .then(result => {
                 setUser(result.user);
@@ -121,20 +97,23 @@ const useFirebase = () => {
 
     const logOut = () => {
         signOut(auth)
-            .then(() => { })
-            .finally(() => setIsLoading(false));
+
     }
 
     return {
         user,
+        setUser,
         isLoading,
         error,
+        verifyEmail,
+        sendEmailVerification,
+        setUserName,
+        getName,
         signInUsingGoogle,
         handleLogin,
         handleEmailChange,
         handlePasswordChange,
         handleResetPassword,
-        handleRegistration,
         registerNewUser,
         logOut
     }

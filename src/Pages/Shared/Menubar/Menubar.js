@@ -6,8 +6,9 @@ import { NavLink } from 'react-router-dom';
 import useAuth from '../../../Hooks/useAuth';
 
 const Menubar = () => {
-    const { user, logOut } = useAuth();
-    console.log(user);
+    const { allContext } = useAuth();
+    const { user, logOut } = allContext;
+
     return (
         <>
             <Navbar bg="dark" variant="dark" sticky="top" collapseOnSelect expand="lg">

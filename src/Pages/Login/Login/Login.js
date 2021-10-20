@@ -1,4 +1,5 @@
 import { faGoogle } from '@fortawesome/free-brands-svg-icons';
+import { faEnvelope, faUnlock } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { NavLink, useLocation, useHistory } from 'react-router-dom';
@@ -9,10 +10,11 @@ import login from '../../../images/login-2.png';
 
 const Login = () => {
     const { allContext } = useAuth();
-    const { setUser, signInUsingGoogle, handleLogin, error, handleEmailChange, handlePasswordChange } = allContext;
+    const { setUser, signInUsingGoogle, handleLogin, getEmail, getPassword, setError, } = allContext;
+
     const location = useLocation();
     const history = useHistory();
-    const redirect_url = location?.state?.from || '/home';
+    const redirect = location?.state?.from || '/home';
 
 
     const handleGoogleSignIn = (e) => {
@@ -21,7 +23,7 @@ const Login = () => {
             .then(result => {
                 console.log(result);
                 setUser(result.user)
-                history.push(redirect_url)
+                history.push(redirect)
             })
     }
 
@@ -42,19 +44,30 @@ const Login = () => {
                             Are you New? Please Sign Up!
                         </NavLink>
                     </p>
-                    <p className="text-danger">{error}</p>
+                    <p className="text-danger">{setError}</p>
 
-                    <form onSubmit={handleLogin} className="text-center">
+                    <form onSubmit={(e) => {
+                        e.preventDefault();
+                        handleLogin()
+                            .then(result => {
+                                const user = result.user
+                                setUser(user);
+                                setError('');
+                                history.push(redirect)
+                            })
+                            .catch(error => {
+                                setError(error.message)
+                            })
+                    }} className="text-center">
 
-
-                        <input onBlur={handleEmailChange} className="input-field border-bottom border-0 w-50" type="email" name="email" placeholder="Email" required />
+                        <FontAwesomeIcon icon={faEnvelope} />  <input onBlur={getEmail} className="input-field border-bottom border-0 w-50" type="email" name="email" placeholder="Email" required />
                         <br /> <br />
-                        <input onBlur={handlePasswordChange} className="input-field border-bottom border-0 w-50" type="password" name="password" placeholder="Password" required />
+                        <FontAwesomeIcon icon={faUnlock} />   <input onBlur={getPassword} className="input-field border-bottom border-0 w-50" type="password" name="password" placeholder="Password" required />
                         <br /> <br />
                         <input
                             className="mt-5 w-50 btn btn-success m-auto"
                             type="submit"
-                            value="Login" />
+                            value="Sign In" />
                         <br /> <br />
 
                         <p>-------or---------</p>

@@ -18,32 +18,35 @@ const useFirebase = () => {
     const googleProvider = new GoogleAuthProvider();
 
 
-    const handleEmailChange = (e) => {
-        setEmail(e?.target?.value);
-    };
+    //name
+    const getName = e => {
+        setName(e.target.value);
 
-    const handlePasswordChange = (e) => {
-        setPassword(e?.target?.value);
-    };
+    }
+    //email
+    const getEmail = e => {
+        setEmail(e.target.value);
 
-    const getName = (e) => {
-        setName(e?.target?.value);
-    };
+    }
+    //password
+    const getPassword = e => {
+        setPassword(e.target.value);
+    }
 
-    const registerNewUser = (e) => {
+    // register with email & pass
+    const newRegister = e => {
         e.preventDefault();
         createUserWithEmailAndPassword(auth, email, password)
             .then(result => {
-                const user = result.user;
+                const user = result.user
                 console.log(user);
-                setError("");
-                verifyEmail();
+                setError('')
                 setUserName();
-            })
-            .catch(error => {
-                setError(error.message);
+            }).catch(error => {
+                setError(error.message)
             })
     }
+
 
     const setUserName = () => {
         updateProfile(auth.currentUser, { displayName: name })
@@ -59,16 +62,9 @@ const useFirebase = () => {
         return signInWithPopup(auth, googleProvider)
     }
 
-    const handleLogin = (e) => {
-        e.preventDefault()
-        signInWithEmailAndPassword(auth, email, password)
-            .then(result => {
-                setUser(result.user);
-                setError("");
-            })
-            .catch(error => {
-                setError(error.message);
-            })
+
+    const handleLogin = () => {
+        return signInWithEmailAndPassword(auth, email, password)
     }
 
 
@@ -105,16 +101,17 @@ const useFirebase = () => {
         setUser,
         isLoading,
         error,
+        setError,
         verifyEmail,
         sendEmailVerification,
         setUserName,
-        getName,
         signInUsingGoogle,
+        newRegister,
         handleLogin,
-        handleEmailChange,
-        handlePasswordChange,
+        getName,
+        getEmail,
+        getPassword,
         handleResetPassword,
-        registerNewUser,
         logOut
     }
 }

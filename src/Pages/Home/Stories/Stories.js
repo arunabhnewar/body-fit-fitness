@@ -1,11 +1,15 @@
 import React from 'react';
 import './Stories.css';
+import Zoom from 'react-reveal/Zoom';
 
 const Stories = () => {
     return (
         <div className="container-fluid py-5 my-5">
-            <h5 className="text-center text-white">Experience</h5>
-            <h1 className="text-center text-warning pb-5">Our Stories</h1>
+            <Zoom left cascade>
+                <h5 className="text-center text-white">Experience</h5>
+                <h1 className="text-center text-warning pb-5">Our Stories</h1>
+            </Zoom>
+
             <div className="stories-container">
                 <div className="row pt-5">
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import Zoom from 'react-reveal/Zoom';
 import package1 from '../../../images/package/package-1.png';
 import package2 from '../../../images/package/package-2.png';
 import package3 from '../../../images/package/package-3.png';
@@ -6,10 +7,13 @@ import package3 from '../../../images/package/package-3.png';
 const Packages = () => {
     return (
         <div className="container mt-5 pt-5 pb-5">
-            <h5 className="text-center text-white">Packages</h5>
-            <h1 className="text-center text-warning">Special Packages</h1>
-            <div className="row mt-5 mx-auto">
 
+            <Zoom left cascade>
+                <h5 className="text-center text-white">Packages</h5>
+                <h1 className="text-center text-warning">Special Packages</h1>
+            </Zoom>
+
+            <div className="row mt-5 mx-auto">
                 <div className="col-sm-12 col-md-4">
                     <div>
                         <img className="img-fluid" src={package1} alt="" />

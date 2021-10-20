@@ -1,5 +1,6 @@
 import React from 'react';
 import './Blog.css';
+import Zoom from 'react-reveal/Zoom';
 import blog1 from '../../images/blog/blog-1.png';
 import blog2 from '../../images/blog/blog-2.png';
 import blog3 from '../../images/blog/blog-3.png';
@@ -13,8 +14,11 @@ import { faCommentAlt } from '@fortawesome/free-solid-svg-icons';
 const Blog = () => {
     return (
         <div id="blog" className="container-fluid">
-            <h5 className="text-center text-white pt-5">Blog</h5>
-            <h1 className="text-center text-warning pt-2">Fitness Blog</h1>
+            <Zoom left cascade>
+                <h5 className="text-center text-white pt-5">Blog</h5>
+                <h1 className="text-center text-warning pt-2">Fitness Blog</h1>
+            </Zoom>
+
             <div className="row mt-5">
 
                 <div className="col-sm-12 col-md-4 mx-auto">

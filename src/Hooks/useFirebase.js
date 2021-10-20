@@ -7,12 +7,11 @@ initializeAuthentication();
 
 const useFirebase = () => {
     const [user, setUser] = useState({});
-    const [isLoading, setIsLoading] = useState(true);
-
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
+    const [isLoading, setIsLoading] = useState(true);
 
     const auth = getAuth();
     const googleProvider = new GoogleAuthProvider();
@@ -38,7 +37,7 @@ const useFirebase = () => {
         e.preventDefault();
         createUserWithEmailAndPassword(auth, email, password)
             .then(result => {
-                const user = result.user
+                const user = (result.user)
                 console.log(user);
                 setError('')
                 setUserName();

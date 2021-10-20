@@ -12,6 +12,7 @@ import Blog from './Pages/Blog/Blog';
 import Login from './Pages/Login/Login/Login';
 import Registration from './Pages/Login/Registration/Registration';
 import Footer from './Pages/Shared/Footer/Footer';
+import Contact from './Pages/Contact/Contact';
 
 function App() {
   return (
@@ -34,6 +35,9 @@ function App() {
             </Route>
             <Route path="/trainer">
               <Trainer />
+            </Route>
+            <Route path="/contact">
+              <Contact />
             </Route>
             <PrivateRoute path="/blog">
               <Blog />

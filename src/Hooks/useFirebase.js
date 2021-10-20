@@ -1,5 +1,5 @@
 import initializeAuthentication from "../Pages/Login/Firebase/firebase.init";
-import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged, signInWithEmailAndPassword, sendPasswordResetEmail, createUserWithEmailAndPassword, sendEmailVerification, updateProfile } from "firebase/auth";
+import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendEmailVerification, updateProfile, GithubAuthProvider } from "firebase/auth";
 import { useEffect, useState } from "react";
 
 
@@ -15,6 +15,7 @@ const useFirebase = () => {
 
     const auth = getAuth();
     const googleProvider = new GoogleAuthProvider();
+    const githubProvider = new GithubAuthProvider();
 
 
     //name
@@ -41,17 +42,18 @@ const useFirebase = () => {
                 console.log(user);
                 setError('')
                 setUserName();
-            }).catch(error => {
+            })
+            .catch(error => {
                 setError(error.message)
             })
     }
 
-
+    // set user name
     const setUserName = () => {
         updateProfile(auth.currentUser, { displayName: name })
             .then(result => { })
     }
-
+    // very email
     const verifyEmail = () => {
         sendEmailVerification(auth.currentUser)
             .then(result => { })
@@ -61,20 +63,14 @@ const useFirebase = () => {
         return signInWithPopup(auth, googleProvider)
     }
 
-
-    const handleLogin = () => {
-        return signInWithEmailAndPassword(auth, email, password)
+    // github sign in
+    const signInUsingGithub = () => {
+        return signInWithPopup(auth, githubProvider)
     }
 
-
-    const handleResetPassword = (email) => {
-        sendPasswordResetEmail(auth, email)
-            .then(result => {
-                setEmail(user)
-            })
-            .catch(error => {
-                setError(error.message)
-            })
+    // handle login
+    const handleLogin = () => {
+        return signInWithEmailAndPassword(auth, email, password)
     }
 
     useEffect(() => {
@@ -89,7 +85,7 @@ const useFirebase = () => {
         return () => unsubscribed;
     }, [])
 
-
+    // handle log out
     const logOut = () => {
         signOut(auth)
 
@@ -105,12 +101,12 @@ const useFirebase = () => {
         sendEmailVerification,
         setUserName,
         signInUsingGoogle,
+        signInUsingGithub,
         newRegister,
         handleLogin,
         getName,
         getEmail,
         getPassword,
-        handleResetPassword,
         logOut
     }
 }

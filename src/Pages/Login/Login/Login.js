@@ -1,4 +1,4 @@
-import { faGoogle } from '@fortawesome/free-brands-svg-icons';
+import { faGithub, faGoogle } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope, faUnlock } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
@@ -10,7 +10,7 @@ import login from '../../../images/login-2.png';
 
 const Login = () => {
     const { allContext } = useAuth();
-    const { setUser, signInUsingGoogle, handleLogin, getEmail, getPassword, setError, } = allContext;
+    const { setUser, handleLogin, getEmail, getPassword, setError, signInUsingGoogle, signInUsingGithub } = allContext;
 
     const location = useLocation();
     const history = useHistory();
@@ -22,6 +22,15 @@ const Login = () => {
         signInUsingGoogle()
             .then(result => {
                 console.log(result);
+                setUser(result.user)
+                history.push(redirect)
+            })
+    }
+
+    const handleGithubSignIn = (e) => {
+        e.preventDefault();
+        signInUsingGithub()
+            .then(result => {
                 setUser(result.user)
                 history.push(redirect)
             })
@@ -72,6 +81,8 @@ const Login = () => {
 
                         <p>-------or---------</p>
                         <button onClick={handleGoogleSignIn} type="submit" className="btn btn-warning me-2"> <FontAwesomeIcon icon={faGoogle} /> Google Sign In</button>
+
+                        <button onClick={handleGithubSignIn} type="submit" className="btn btn-dark me-2"> <FontAwesomeIcon icon={faGithub} /> Github Sign In</button>
 
                     </form>
                 </div>

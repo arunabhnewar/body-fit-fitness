@@ -25,7 +25,7 @@ const Registration = () => {
 
                     <p className="text-center mb-5">
                         <NavLink className="text-decoration-none text-success" to="/login">
-                            Have you an Account? Please Sign In!
+                            Do you have an Account? Please Sign In!
                         </NavLink>
                     </p>
 
